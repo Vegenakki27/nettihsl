@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Video Selector</title>
+  <title>Lippusimulaattori</title>
   <style>
     /* General Styles */
     body {
@@ -87,6 +87,16 @@
       background: #ff0000;
       color: #fff;
     }
+
+    .boksi {
+  width: 200px;
+  border: 1px solid rgb(255, 0, 0);
+  padding: 10px;
+  margin: 10px;
+  color: #a7a7a7;
+  font-family: "Times New Roman", Times, serif;
+}
+
 
     .dropdown:hover .dropdown-content {
       display: block;
@@ -177,15 +187,31 @@
         <a href="#" data-color="punainen">Punainen</a>
         <a href="#" data-color="vihrea">Vihreä</a>
         <a href="#" data-color="sininen">Sininen</a>
+        <a href="#" data-color="liila">Liila</a>
+        <a href="#" data-color="lime">Lime Vihreä</a>
+        <a href="#" data-color="oranssi">Oranssi</a>
       </div>
     </div>
     <button id="go-button">Aloita Simulaatio</button>
   </nav>
 
-  <div class="dick">
+  <div class="dick"> <br />
    Päivän väri: (ei toimi vielä)
     </div>
 
+
+    <div class="boksi">
+        Päivitykset:<br />
+        <strong>- Nettisivu Pystyssä! </strong> <br />
+        <br /><strong>  HUOM VAIN LEIKKI KÄYTTÖÖN! ETHÄN KÄYTÄ BUSSEISSA TAI MUUALLA! </strong>
+      </div>
+
+      
+    <div class="kuva">
+        <html>
+            <img src="https://i.imgur.com/s8aePwb.jpg">
+        </html>
+      </div>
 
   <footer>
     <p>vege2025</p>
@@ -245,7 +271,7 @@
           fullscreenVideoContainer.msRequestFullscreen();
         }
       } else {
-        alert('Please select a color first!');
+        alert('Valitse väri ensin paskahattu!');
       }
     });
 
