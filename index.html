@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Video Selector</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000000;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #ff0000, #000000);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 10px 100px rgba(255, 0, 0, 0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    /* Dropdown Menu */
+    nav {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown button {
+      background: linear-gradient(135deg, #2f2f2f, #0000001c);
+      color: #595959;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 25px;
+      box-shadow: 3px 10x rgba(255, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .dropdown button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(255, 68, 68, 0.4);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #1a1a1a;
+      min-width: 160px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: #9a9a9a;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    .dropdown-content a:hover {
+      background: #ff0000;
+      color: #fff;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Go Button */
+    #go-button {
+      display: none;
+      background: linear-gradient(135deg, #4caf50, #66bb6a);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    #go-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+    }
+
+    /* Fullscreen Video Container */
+    #fullscreen-video {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 1000;
+    }
+
+    #fullscreen-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #000000, #5a0000);
+      color: #ff0000;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+      margin-top: auto;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .dropdown button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      #go-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lippu Simulaattori</h1>
+  </header>
+
+  <nav>
+    <div class="dropdown">
+      <button id="dropdown-button">Valitse Väri</button>
+      <div class="dropdown-content">
+        <a href="#" data-color="punainen">Punainen</a>
+        <a href="#" data-color="vihrea">Vihreä</a>
+        <a href="#" data-color="sininen">Sininen</a>
+      </div>
+    </div>
+    <button id="go-button">Aloita Simulaatio</button>
+  </nav>
+
+  <div class="dick">
+   Päivän väri: (ei toimi vielä)
+    </div>
+
+
+  <footer>
+    <p>vege2025</p>
+  </footer>
+
+  <!-- Fullscreen Video Container -->
+  <div id="fullscreen-video">
+    <video id="color-video" autoplay loop muted>
+      <!-- Video source will be dynamically set by JavaScript -->
+    </video>
+  </div>
+
+  <script>
+    // Get elements
+    const dropdownButton = document.getElementById('dropdown-button');
+    const goButton = document.getElementById('go-button');
+    const fullscreenVideoContainer = document.getElementById('fullscreen-video');
+    const videoElement = document.getElementById('color-video');
+    const dropdownLinks = document.querySelectorAll('.dropdown-content a');
+
+    let selectedColor = null;
+
+    // Define video links for each color
+    const videoLinks = {
+      punainen: 'https://www.example.com/red-video.mp4',
+      vihrea: 'https://www.example.com/green-video.mp4',
+      sininen: 'https://www.example.com/blue-video.mp4'
+    };
+
+    // Add event listeners to dropdown links
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        selectedColor = link.getAttribute('data-color');
+        dropdownButton.textContent = `Valittu väri: ${selectedColor}`;
+        goButton.style.display = 'inline-block';
+      });
+    });
+
+    // Add event listener to Go button
+    goButton.addEventListener('click', () => {
+      if (selectedColor && videoLinks[selectedColor]) {
+        // Set the video source
+        videoElement.src = videoLinks[selectedColor];
+
+        // Show the fullscreen video container
+        fullscreenVideoContainer.style.display = 'block';
+
+        // Enter fullscreen mode
+        if (fullscreenVideoContainer.requestFullscreen) {
+          fullscreenVideoContainer.requestFullscreen();
+        } else if (fullscreenVideoContainer.mozRequestFullScreen) { // Firefox
+          fullscreenVideoContainer.mozRequestFullScreen();
+        } else if (fullscreenVideoContainer.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+          fullscreenVideoContainer.webkitRequestFullscreen();
+        } else if (fullscreenVideoContainer.msRequestFullscreen) { // IE/Edge
+          fullscreenVideoContainer.msRequestFullscreen();
+        }
+      } else {
+        alert('Please select a color first!');
+      }
+    });
+
+    // Exit fullscreen mode when pressing the Escape key
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        fullscreenVideoContainer.style.display = 'none';
+        videoElement.pause();
+        videoElement.src = '';
+      }
+    });
+  </script>
+</body>
+</html>
