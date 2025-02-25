@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lippusimulaattori</title>
   <style>
+
+    
     /* General Styles */
     body {
       margin: 0;
@@ -25,7 +27,7 @@
       color: #fff;
       padding: 20px;
       text-align: center;
-      width: 100%;
+      width: 50%;
       border-radius: 0 0 20px 20px;
       box-shadow: 0 10px 100px rgba(255, 0, 0, 0.3);
     }
@@ -49,7 +51,7 @@
 
     .dropdown button {
       background: linear-gradient(135deg, #2f2f2f, #0000001c);
-      color: #595959;
+      color: #c2bdbd;
       border: none;
       padding: 12px 24px;
       font-size: 1rem;
@@ -87,13 +89,59 @@
       background: #ff0000;
       color: #fff;
     }
+   
+    .dropdown2 {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown2 button {
+      background: linear-gradient(135deg, #720d0d, #0000001c);
+      color: #bababa;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 25px;
+      box-shadow: 3px 10x rgba(255, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .dropdown2 button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(255, 68, 68, 0.4);
+    }
+
+    .dropdown2-content {
+      display: none;
+      position: absolute;
+      background: #1a1a1a;
+      min-width: 160px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .dropdown2-content a {
+      color: #9a9a9a;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    .dropdown2-content a:hover {
+      background: #ff0000;
+      color: #fff;
+    }
 
     .boksi {
   width: 200px;
   border: 1px solid rgb(255, 0, 0);
   padding: 10px;
   margin: 10px;
-  color: #a7a7a7;
+  color: #ffffff;
   font-family: "Times New Roman", Times, serif;
 }
 
@@ -194,15 +242,27 @@
     </div>
     <button id="go-button">Aloita Simulaatio</button>
   </nav>
+  <br />
+</head>
+<body>
+  <div class="dropdown2">
+    <button>Valitse Alue</button>
+    <div class="dropdown2-content">
+      <a href="#">AB</a>
+      <a href="#">ABC</a>
+      <a href="#">ABCD</a>
+    </div>
+  </div> 
 
   <div class="dick"> <br />
-   Päivän väri: (ei toimi vielä)
+  
     </div>
 
-
+     
     <div class="boksi">
         Päivitykset:<br />
         <strong>- Nettisivu Pystyssä! </strong> <br />
+        <strong>- Päivän väri ja alue ei toimi! </strong> <br />
         <br /><strong>  HUOM VAIN LEIKKI KÄYTTÖÖN! ETHÄN KÄYTÄ BUSSEISSA TAI MUUALLA! </strong>
       </div>
 
@@ -211,7 +271,7 @@
     <br />
 
         <html>
-            <img src="https://i.imgur.com/s8aePwb.jpg">
+            <img src="moly.jfif">
         </html>
       </div>
 
@@ -241,8 +301,10 @@
       punainen: 'https://www.example.com/red-video.mp4',
       vihrea: '<iframe allow="fullscreen" allowfullscreen height="848" src="https://streamable.com/e/9oogu5?nocontrols=1" width="384" style="border:none;"></iframe>',
       sininen: 'https://www.example.com/blue-video.mp4',
-      lime: ''
+      liila: 'liilaabc.mp4'
     };
+
+    
 
     // Add event listeners to dropdown links
     dropdownLinks.forEach(link => {
