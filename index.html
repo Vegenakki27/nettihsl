@@ -1,10 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="icon" type="image/x-icon" href="hsl.ico">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lippusimulaattori! </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://source.unsplash.com/random') no-repeat center center/cover;
+            height: 100vh;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: filter 0.3s ease;
+        }
+        .blurred {
+            filter: blur(px);
+        }
+        .modal {
+            position: fixed;
+            color: #ffffff;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: rgb(0, 0, 0)
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal-content label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="blurred">
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <p>Hyväksy meidän ehdot käyttääksesi palvelujamme!</p>
+            <label>
+                <input type="checkbox" id="agreeCheckbox"> Hyväksyn
+            </label>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('agreeCheckbox').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('modal').style.display = 'none';
+                document.body.classList.remove('blurred');
+            }
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lippusimulaattori</title>
   <style>
+
+
 
     
     /* General Styles */
@@ -228,6 +301,8 @@
     <h1>Lippu Simulaattori</h1>
   </header>
 
+  
+
   <nav>
     <div class="dropdown">
       <button id="dropdown-button">Valitse Väri</button>
@@ -263,7 +338,8 @@
         Päivitykset:<br />
         <strong>- Nettisivu Pystyssä! </strong> <br />
         <strong>- Päivän väri ja alue ei toimi! </strong> <br />
-        <br /><strong>  HUOM VAIN LEIKKI KÄYTTÖÖN! ETHÄN KÄYTÄ BUSSEISSA TAI MUUALLA! </strong>
+        <br /><strong>  HUOM VAIN LEIKKI KÄYTTÖÖN! ETHÄN KÄYTÄ BUSSEISSA TAI MUUALLA! </strong><br />
+        <br /><strong>  Liity Meidän Telegrammiin! </strong> 
       </div>
 
       
