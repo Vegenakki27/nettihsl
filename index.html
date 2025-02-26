@@ -22,7 +22,7 @@
             transition: filter 0.3s ease;
         }
         .blurred {
-            filter: blur(px);
+            filter: blur(0px);
         }
         .modal {
             position: fixed;
@@ -51,7 +51,10 @@
 <body class="blurred">
     <div class="modal" id="modal">
         <div class="modal-content">
-            <p>Hyväksy meidän ehdot käyttääksesi palvelujamme!</p>
+            <p>Hyväksy meidän ehdot käyttääksesi palvelujamme!
+              <br />
+              Ehdot löytää täältä: 
+            </p>
             <label>
                 <input type="checkbox" id="agreeCheckbox"> Hyväksyn
             </label>
@@ -134,6 +137,23 @@
       transition: all 0.3s ease;
     }
 
+    .nappi {
+      background: linear-gradient(135deg, #2f2f2f, #0000001c);
+      color: #c2bdbd;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 25px;
+      box-shadow: 3px 10x rgba(255, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .nappi2 {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(255, 68, 68, 0.4);
+    }
+
     .dropdown button:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 15px rgba(255, 68, 68, 0.4);
@@ -195,6 +215,7 @@
       z-index: 1;
       overflow: hidden;
     }
+    
 
     .dropdown2-content a {
       color: #9a9a9a;
@@ -329,10 +350,10 @@
     </div>
   </div> 
 
-  <div class="dick"> <br />
+  <div class=""> <br />
   
     </div>
-
+    <button class="nappi" onclick="location.href='chat.html'">Väri Chat</button>
      
     <div class="boksi">
         Päivitykset:<br />
